@@ -1,0 +1,13 @@
+﻿@{ 
+    @model POCHTI_KURSACH.Models.Entities.Product
+ }
+
+<h3>@Model.Name @Model.Price руб</h3>
+<h5>Осталось на складе @Model.Amount</h5>
+<a asp-area="" asp-route-id="@Model.Id" asp-controller="Catalog" asp-action="AddToBag">
+    <img style="width: 35%; padding-bottom: 10px;" src="@Url.Content(Model.image)" alt="@Model.Name" />
+    <br />
+    
+    <br />
+    <input value="Положить в корзину" type="button" class="btn btn-dark" />
+</a>

@@ -1,0 +1,19 @@
+﻿
+@{
+    @model POCHTI_KURSACH.Models.Entities.Product;
+}
+
+<form asp-action="ConfirmBuy" asp-controller="Clients" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label class="control-label">Имя</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Адрес</label>
+        <input type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Заказать" class="btn btn-outline-dark" />
+    </div>
+</form>
+

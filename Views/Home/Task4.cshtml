@@ -1,0 +1,39 @@
+﻿@model IEnumerable<POCHTI_KURSACH.Models.ViewModels.Task4Model>
+@{
+    ViewData["Title"] = "Report";
+
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<button id="btnPdf" class="btn btn-primary">Generate pdf</button>
+
+
+<div id="pdfContainer" style="text-align:center;">
+    <table class="table" style="border:solid;">
+        <thead>
+            <tr>
+                <th>Id Operation</th>
+                <th>User Name</th>
+                <th>Product Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.OperationId</th>
+                    <th>@item.UserName</th>
+                    <th>@item.ProductName</th>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $("#btnPdf").click(function () {
+        var sHtml = $("#pdfContainer").html();
+        sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+        window.open('../Home/GeneratePdf?html=' + sHtml, '_blank');
+    });
+</script>

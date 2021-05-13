@@ -1,0 +1,45 @@
+﻿@model POCHTI_KURSACH.Models.ViewModels.AddProductModel
+
+<h2>Добавление</h2>
+
+<form asp-action="AddProduct" asp-controller="Catalog" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Name">Название продукта </label><br />
+            <input type="text" asp-for="Name" size="23" />
+            <span asp-validation-for="Name" />
+        </div>
+        <div>
+            <label asp-for="Price">Стоимость</label><br />
+            <input type="text" asp-for="Price" size="23" />
+            <span asp-validation-for="Price" />
+        </div>
+        <div>
+            <label asp-for="Amount">Количество</label><br />
+            <input type="text" asp-for="Amount" size="23" />
+            <span asp-validation-for="Amount" />
+        </div>
+        <div>
+            <label asp-for="Garant">Сколько на складе</label><br />
+            <input type="text" asp-for="Garant" size="23" />
+            <span asp-validation-for="Garant" />
+        </div>
+        <div>
+
+            <label asp-for="CategoryId">Категория</label><br />
+            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList"></select><br />
+            <span asp-validation-for="CategoryId" />
+
+        </div>
+        <div>
+            <label asp-for="image">Фото</label><br />
+            <input asp-for="image" size="23" />
+            <span asp-validation-for="image" />
+        </div>
+        <div>
+            <br />
+            <input asp-action="AddProduct" asp-controller="Catalog" type="submit" value="Добавить продукт" />
+        </div>
+    </div>
+</form>
