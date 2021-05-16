@@ -1,14 +1,22 @@
 ﻿@model IEnumerable<POCHTI_KURSACH.Models.Entities.User>
 
+<table class="table" style="border:dashed;">
+    <thead>
+        <tr>
+            <th>Id </th>
+            <th>Логин</th>
+            <th>Пароль</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Id</th>
+                <th>@item.Login</th>
+                <th>@item.Password</th>
 
-
-@foreach (var item in Model)
-{
-<tr>
-    <th>Id - @item.Id <th>
-    <th>Name - @item.Name </th>
-    <th>Login - @item.Login </th>
-    <th>Pas - @item.Password</th>
-    <br>
-</tr>
-}
+            </tr>
+        }
+    </tbody>
+</table>

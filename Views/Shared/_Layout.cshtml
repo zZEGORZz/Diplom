@@ -26,6 +26,9 @@
                         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                         {
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="ShowUsers">Пользователи</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="AddProduct">Добавить</a>
                             </li>
 
