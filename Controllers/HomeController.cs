@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using POCHTI_KURSACH.Models;
 using POCHTI_KURSACH.Models.Entities;
@@ -24,7 +27,7 @@ namespace POCHTI_KURSACH.Controllers
 
         public IActionResult Index()
         {
-            return View();
+             return View();
         }
 
         [Authorize(Roles = "admin")]

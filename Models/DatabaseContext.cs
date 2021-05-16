@@ -36,6 +36,7 @@ namespace POCHTI_KURSACH.Models
                 new Entities.User
                 {
                     Id = 1,
+                    Name = "Admin",
                     Login = "admin",
                     Password = "admin",
                     RoleId = 1
@@ -43,6 +44,7 @@ namespace POCHTI_KURSACH.Models
                 new User
                 {
                     Id = 2,
+                    Name = "User",
                     Login = "user",
                     Password = "user",
                     RoleId = 2

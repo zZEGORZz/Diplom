@@ -51,6 +51,13 @@ namespace POCHTI_KURSACH.Controllers
             if (product != null) return View(product);
             else return NotFound();
         }
+        public IActionResult ShowUsers()
+        {
+            IQueryable<User> prod = _context.Users;
+
+            return View(prod.ToList());
+        }
+
         [Authorize]
         public  async Task<IActionResult> AddToBag(int? id)
         {
