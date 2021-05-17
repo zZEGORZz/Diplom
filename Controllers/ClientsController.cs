@@ -81,7 +81,48 @@ namespace POCHTI_KURSACH.Controllers
                 return RedirectToAction("ShowAll", "Catalog");
         }
 
-        [HttpGet]
+        public async Task<IActionResult> BuyAll()
+        {
+            IQueryable<ProductsInBagViewModel> bags = null;
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                string userName = HttpContext.User.Identity.Name;
+                User user = _context.Users.FirstOrDefault(u => u.Login == userName);
+                if (user == null) return NotFound();
+
+                bags = _context.Bags.Where(b => b.UserId == user.Id).Select(b =>
+                    new ProductsInBagViewModel
+                    {
+                        Name = b.Product.Name,
+                        image = b.Product.image,
+                        Id = b.Id,
+                        Amount = b.Amount,
+                        ProductId = b.ProductId
+                    });
+
+                var prod = await (from b in bags
+                                  join p in _context.Products
+                                  on b.ProductId equals p.Id
+                                  select new
+                                  {
+                                      Amount = b.Amount,
+                                      Price = p.Price,
+                                      Id = p.Id
+                                  }).ToListAsync();
+
+                float resultPrice = 0;
+                foreach (var item in prod)
+                {
+                    resultPrice += item.Price * item.Amount;
+                }
+                ViewBag.ResultPrice = resultPrice;
+
+            }
+
+            return View(await bags.ToListAsync());
+        }
+
+    [HttpGet]
         public IActionResult Buy(int? id)
         {
             Product product = _context.Products.FirstOrDefault(p => p.Id == (int)id);

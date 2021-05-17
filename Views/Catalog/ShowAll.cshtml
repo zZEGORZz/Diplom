@@ -4,8 +4,8 @@
 }
 <form>
     <select name="categoryId" asp-items="ViewBag.CategoryList" class="list-group-item-dark mt-4" style="font-size:18px; padding-bottom:2px"></select>
-    <input name="search" type="search"/>
-    <input type="submit" value="Найти"/>
+    <input name="search" type="search" />
+    <input type="submit" value="Найти" />
 </form>
 <h1>Каталог товаров</h1>
 <ul class="products clearfix">
@@ -15,12 +15,35 @@
             <div class="product">
                 <p><b>@item.Name</b></p>
 
-                <img style="width: 75%; padding-bottom: 10px;" src="@Url.Content(item.image)" alt="@item.Name" />
-                <a asp-area=""  asp-route-id="@item.Id" asp-controller="Catalog" asp-action="Detail">
-                    <input value="Подробнее" type="button" class="b1" />
-                </a>
-            </div>
-            
-        </li>
+
+                <img style="width: 85%; padding-left: 35px; padding-bottom: 10px;" src="@Url.Content(item.image)" alt="@item.Name" />
+
+                    <div style="display:inline">
+                        <a style="color:aliceblue" asp-route-id="@item.Id" asp-controller="Catalog" asp-action="Detail">
+                            <input value="Подробнее" type="button" class="b1" />
+                        </a>
+                    </div>
+
+                    <div style="display:inline">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-area="" asp-route-id="@item.Id" asp-controller="Catalog" asp-action="AddToBag">
+                                <input value="В корзину" type="button" class="b1" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-area="" asp-route-id="@item.Id" asp-controller="Account" asp-action="Login">
+                                <input value="В корзину" type="button" class="b1" />
+                            </a>
+                        }
+                    </div>
+                </div>
+</li>
     }
 </ul>
+
+<div>
+    <div style="display:inline">111</div>
+    <div style="display:inline">1111</div>
+</div>

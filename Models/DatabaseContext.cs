@@ -15,7 +15,6 @@ namespace POCHTI_KURSACH.Models
         public DbSet<Entities.Product> Products { get; set; }
         public DbSet<Entities.Operation> Operations { get; set; }
         public DbSet<Entities.Category> Categories { get; set; }
-
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
@@ -57,7 +56,10 @@ namespace POCHTI_KURSACH.Models
                 new Entities.Category { Id = 2, Name = "напитки"},
                 new Entities.Category { Id = 3, Name = "хлебобулочные изделия"},
                 new Entities.Category { Id = 4, Name = "мясные изделия"},
-                new Entities.Category { Id = 5, Name = "кондитерские изделия"}
+                new Entities.Category { Id = 5, Name = "кондитерские изделия"},
+                new Entities.Category { Id = 6, Name = "овощи"},
+                new Entities.Category { Id = 7, Name = "фрукты"},
+                new Entities.Category { Id = 8, Name = "рыба, морепродукты"}
             });
             modelBuilder.Entity<Entities.Product>().HasData(new Entities.Product[] {
                 new Entities.Product
@@ -141,6 +143,96 @@ namespace POCHTI_KURSACH.Models
                     Price = 2,
                     Garant = 14,
                     Amount = 8
+                },
+                       new Entities.Product
+                {
+                    Id = 9,
+                    Name = "Раки живые",
+                    CategoryId = 8,
+                    image = "/img/crayfish.png",
+                    Price = 3,
+                    Garant = 14,
+                    Amount = 27
+                },
+                       new Entities.Product
+                {
+                    Id = 14,
+                    Name = "Краб морской",
+                    CategoryId = 8,
+                    image = "/img/crayfish2.png",
+                    Price = 7,
+                    Garant = 14,
+                    Amount = 13
+                },
+                       new Entities.Product
+                {
+                    Id = 10,
+                    Name = "Осётр речной",
+                    CategoryId = 8,
+                    image = "/img/osetr.png",
+                    Price = 4,
+                    Garant = 15,
+                    Amount = 26
+                },
+                       new Entities.Product
+                {
+                    Id = 11,
+                    Name = "Свекла",
+                    CategoryId = 6,
+                    image = "/img/svekla.png",
+                    Price = 2,
+                    Garant = 14,
+                    Amount = 33
+                },
+                       new Entities.Product
+                {
+                    Id = 12,
+                    Name = "Помидоры",
+                    CategoryId = 6,
+                    image = "/img/tomato.png",
+                    Price = 2,
+                    Garant = 14,
+                    Amount = 39
+                },
+                       new Entities.Product
+                {
+                    Id = 13,
+                    Name = "Шампиньоны",
+                    CategoryId = 6,
+                    image = "/img/shamp.png",
+                    Price = 3,
+                    Garant = 14,
+                    Amount = 26
+                },
+                            new Entities.Product
+                {
+                    Id = 15,
+                    Name = "Ананас",
+                    CategoryId = 7,
+                    image = "/img/pineapple.png",
+                    Price = 4,
+                    Garant = 14,
+                    Amount = 36
+                },
+                                 new Entities.Product
+                {
+                    Id = 16,
+                    Name = "Красные апельсины",
+                    CategoryId = 7,
+                    image = "/img/orange-red.png",
+                    Price = 3,
+                    Garant = 14,
+                    Amount = 31
+                },
+                                      new Entities.Product
+                {
+                    Id = 17,
+                    Name = "Мандарины",
+                    CategoryId = 7,
+                    image = "/img/mandarin.png",
+                    Price = 5,
+                    Garant = 14,
+                    Amount = 34
                 }
             }) ;
         }

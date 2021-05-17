@@ -54,7 +54,6 @@ namespace POCHTI_KURSACH.Controllers
         public IActionResult ShowUsers()
         {
             IQueryable<User> prod = _context.Users;
-
             return View(prod.ToList());
         }
 

@@ -4,18 +4,22 @@
     ViewData["Title"] = "Корзина";
 }
 
-    <p>Общая стоимость - @ViewBag.ResultPrice</p>
+<b><h3><p>Общая стоимость - @ViewBag.ResultPrice р.</p></b></h3>
 
-@foreach (var item in Model)
-{
-    <p>@item.Name x @item.Amount</p>
-    <img style="width: 35%; padding-bottom: 10px;" src="@Url.Content(item.image)" alt="@item.Name" />
+        @foreach (var item in Model)
+        {
+            <b><h4><p>@item.Name - @item.Amount шт.</p></h4></b>
+            <img style="width: 35%; padding-bottom: 10px;" src="@Url.Content(item.image)" alt="@item.Name" />
 
-    <a asp-area="" asp-route-id="@item.Id" asp-controller="Clients" asp-action="RemoveFromBag">
-        <input value="Вернуть" type="button" class="btn btn-dark" />
-    </a>
-    <a asp-area="" asp-route-id="@item.ProductId" asp-controller="Clients" asp-action="Buy">
-        <input value="Оформить заказ" type="button" class="btn btn-dark" />
-    </a>
+            <a asp-area="" asp-route-id="@item.Id" asp-controller="Clients" asp-action="RemoveFromBag">
+                <input value="Вернуть" type="button" class="btn btn-dark" />
+            </a>
+            <a asp-area="" asp-route-id="@item.ProductId" asp-controller="Clients" asp-action="Buy">
+                <input value="Оформить заказ" type="button" class="btn btn-dark" />
+            </a>
 
-}
+        }
+        <br>
+        <a asp-area="" asp-controller="Clients" asp-action="BuyAll">
+            <input value="Купить всё" type="button" class="btn btn-dark" />
+        </a>
